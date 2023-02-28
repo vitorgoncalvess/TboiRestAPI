@@ -12,21 +12,6 @@ public class Character {
     private Double speed;
     private Double luck;
     private Inventory inventory;
-    private Item startItem;
-
-    public Character(String name, Integer health, Double damage, Double damageMultiplier, Double tears, Double shotSpeed, Double range, Double speed, Double luck, Inventory inventory, Item startItem) {
-        this.name = name;
-        this.health = health;
-        this.damage = damage;
-        this.damageMultiplier = damageMultiplier;
-        this.tears = 2.73+tears;
-        this.shotSpeed = shotSpeed;
-        this.range = range;
-        this.speed = speed;
-        this.luck = luck;
-        this.inventory = inventory;
-        this.startItem = startItem;
-    }
 
     public Character(String name, Integer health, Double damage, Double damageMultiplier, Double tears, Double shotSpeed, Double range, Double speed, Double luck, Inventory inventory) {
         this.name = name;
@@ -114,14 +99,6 @@ public class Character {
 
     public void setLuck(Double luck) {
         this.luck = luck;
-    }
-
-    public Item getStartItem() {
-        return startItem;
-    }
-
-    public void setStartItem(Item startItem) {
-        this.startItem = startItem;
     }
 
     public Inventory getInventory() {
