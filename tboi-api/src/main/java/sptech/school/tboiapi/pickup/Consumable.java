@@ -1,14 +1,14 @@
-package sptech.school.tboiapi;
+package sptech.school.tboiapi.pickup;
 
-public class Item {
+public class Consumable {
 
     private String name;
 
-    public Item(String name) {
+    public Consumable(String name) {
         this.name = name;
     }
 
-    public Item() {
+    public Consumable() {
     }
 
     public String getName() {
@@ -18,5 +18,4 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
-
 }

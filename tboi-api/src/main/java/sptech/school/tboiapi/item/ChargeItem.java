@@ -1,6 +1,6 @@
-package sptech.school.tboiapi;
+package sptech.school.tboiapi.item;
 
-public class ChargeItem extends Item{
+public class ChargeItem extends Item {
 
     private Integer charges;
 

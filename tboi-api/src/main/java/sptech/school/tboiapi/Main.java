@@ -1,5 +1,11 @@
 package sptech.school.tboiapi;
 
+import sptech.school.tboiapi.character.Character;
+import sptech.school.tboiapi.character.CharacterCollection;
+import sptech.school.tboiapi.character.Inventory;
+import sptech.school.tboiapi.item.ChargeItem;
+import sptech.school.tboiapi.item.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 

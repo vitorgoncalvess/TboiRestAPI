@@ -1,4 +1,7 @@
-package sptech.school.tboiapi;
+package sptech.school.tboiapi.character;
+
+import sptech.school.tboiapi.item.Item;
+import sptech.school.tboiapi.pickup.Consumable;
 
 public class Inventory {
 

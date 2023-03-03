@@ -1,4 +1,6 @@
-package sptech.school.tboiapi;
+package sptech.school.tboiapi.character;
+
+import sptech.school.tboiapi.character.Character;
 
 import java.util.ArrayList;
 import java.util.List;

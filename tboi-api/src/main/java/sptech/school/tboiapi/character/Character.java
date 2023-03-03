@@ -1,40 +1,24 @@
-package sptech.school.tboiapi;
+package sptech.school.tboiapi.character;
 
-public class Character {
+import sptech.school.tboiapi.entity.Entity;
 
-    private String name;
+public class Character extends Entity {
+
     private Integer health;
     private Double damage;
     private Double damageMultiplier;
-    private Double tears;
     private Double shotSpeed;
-    private Double range;
-    private Double speed;
     private Double luck;
     private Inventory inventory;
 
     public Character(String name, Integer health, Double damage, Double damageMultiplier, Double tears, Double shotSpeed, Double range, Double speed, Double luck, Inventory inventory) {
-        this.name = name;
+        super(name, tears+2.73, range, speed);
         this.health = health;
         this.damage = damage;
         this.damageMultiplier = damageMultiplier;
-        this.tears = 2.73+tears;
         this.shotSpeed = shotSpeed;
-        this.range = range;
-        this.speed = speed;
         this.luck = luck;
         this.inventory = inventory;
-    }
-
-    public Character() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Integer getHealth() {
@@ -61,36 +45,12 @@ public class Character {
         this.damageMultiplier = damageMultiplier;
     }
 
-    public Double getTears() {
-        return tears;
-    }
-
-    public void setTears(Double tears) {
-        this.tears = tears;
-    }
-
     public Double getShotSpeed() {
         return shotSpeed;
     }
 
     public void setShotSpeed(Double shotSpeed) {
         this.shotSpeed = shotSpeed;
-    }
-
-    public Double getRange() {
-        return range;
-    }
-
-    public void setRange(Double range) {
-        this.range = range;
-    }
-
-    public Double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(Double speed) {
-        this.speed = speed;
     }
 
     public Double getLuck() {
