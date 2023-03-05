@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import sptech.school.tboiapi.Main;
 import sptech.school.tboiapi.character.Character;
 import sptech.school.tboiapi.character.CharacterCollection;
+import sptech.school.tboiapi.item.Item;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class CharacterController {
 
     List<CharacterCollection> list = Main.listCharacterCollection();
+
     @GetMapping
     public List<CharacterCollection> listCharacter() {
         return list;

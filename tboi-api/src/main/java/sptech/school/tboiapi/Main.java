@@ -11,16 +11,18 @@ import java.util.List;
 
 public abstract class Main {
 
-    static Character isaacN = new Character("Isaac", 6, 3.5, 1.0, 0.0, 1.0, 6.5, 1.0, 0.0, new Inventory(new ChargeItem("The D6", 6), 0,1,0, null));
+    static List<Item> itemsList = listItem();
+
+    static Character isaacN = new Character("Isaac", 6, 3.5, 1.0, 0.0, 1.0, 6.5, 1.0, 0.0, new Inventory(itemsList.get(101), 0,1,0, null));
     static CharacterCollection isaac = new CharacterCollection();
-    static Character magN = new Character("Magdalene", 8, 3.5, 1.0, 0.0, 1.0, 6.5, 0.85, 0.0, new Inventory(new ChargeItem("Yum Heart", 4), 0,0,0, null));
+    static Character magN = new Character("Magdalene", 8, 3.5, 1.0, 0.0, 1.0, 6.5, 0.85, 0.0, new Inventory(itemsList.get(43), 0,0,0, null));
     static CharacterCollection mag = new CharacterCollection();
-    static Character cainN = new Character("Cain", 4, 3.5, 1.2, 0.0, 1.0, 4.5, 1.3, 0.0, new Inventory(new Item("Lucky Foot"), 0,0,1, null));
+    static Character cainN = new Character("Cain", 4, 3.5, 1.2, 0.0, 1.0, 4.5, 1.3, 0.0, new Inventory(itemsList.get(44), 0,0,1, null));
     static CharacterCollection cain = new CharacterCollection();
-    static Character normalJudas = new Character("Judas", 2, 3.5, 1.35, 0.0, 1.0, 6.5, 1.0, 0.0, new Inventory(new ChargeItem("The Book Of Belial", 3), 3,0,0, null));
+    static Character normalJudas = new Character("Judas", 2, 3.5, 1.35, 0.0, 1.0, 6.5, 1.0, 0.0, new Inventory(itemsList.get(33), 3,0,0, null));
     static Character darkJudas = new Character("Dark Judas", 4, 3.5, 2.0, 0.0, 1.0, 6.5, 1.1, 0.0, new Inventory(null, 0,0,0, null));
     static CharacterCollection judas = new CharacterCollection();
-    static Character blueBabyN = new Character("???", 6, 3.5, 1.05, 0.0, 1.0, 6.5, 1.1, 0.0, new Inventory(new ChargeItem("The Poop", 1), 0,0,0, null));
+    static Character blueBabyN = new Character("???", 6, 3.5, 1.05, 0.0, 1.0, 6.5, 1.1, 0.0, new Inventory(itemsList.get(35), 0,0,0, null));
     static CharacterCollection blueBaby = new CharacterCollection();
 
     static List<CharacterCollection> list = new ArrayList<>();
@@ -38,6 +40,51 @@ public abstract class Main {
         blueBaby.addCharacter(blueBabyN);
         list.add(blueBaby);
         return list;
+    }
+
+    public static List<Item> listItem() {
+        List<String> items = ScriptPython.runScript();
+        List<Item> itemsList = new ArrayList<>();
+        for(int i = 0; i < items.size(); i++) {
+            while(!items.get(i+1).contains("ItemID")) {
+                i++;
+            }
+            Item item;
+            boolean isActive = false;
+            String itemName = items.get(i); i++;
+            String itemIdS = items.get(i); i++;
+            itemIdS = itemIdS.replace("ItemID: ", "");
+            Integer itemId = Integer.parseInt(itemIdS);
+            String itemDesc = items.get(i); i++;
+            String itemQuality = items.get(i); i++;
+            itemQuality = itemQuality.replace("Quality: ", "");
+            StringBuilder itemDescDetail = new StringBuilder();
+            while(!items.get(i).contains("Type:")) {
+                if(items.get(i+1).contains("Type:")) {
+                    itemDescDetail.append(items.get(i)); i++;
+                } else {
+                    itemDescDetail.append(items.get(i)).append(", "); i++;
+                }
+            }
+            String itemType = items.get(i); i++;
+            itemType = itemType.replace("Type: ", "");
+            String itemRechargeTime = "";
+            if (items.get(i).contains("Recharge ")) {
+                itemRechargeTime = items.get(i); i++;
+                itemRechargeTime = itemRechargeTime.replace("Recharge Time: ", "");
+                itemRechargeTime = itemRechargeTime.replace("Recharge time: ", "");
+                isActive = true;
+            }
+            String itemPool = items.get(i); i++;
+            itemPool = itemPool.replace("Item Pool: ", "");
+            if (isActive) {
+                item = new ChargeItem(itemId, itemName, itemDesc, itemQuality, itemDescDetail.toString(), itemType, itemRechargeTime,  itemPool);
+            } else {
+                item = new Item(itemId, itemName, itemDesc, itemQuality, itemDescDetail.toString(), itemType, itemPool);
+            }
+            itemsList.add(item);
+        }
+        return itemsList;
     }
 
 }

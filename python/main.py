@@ -12,10 +12,10 @@ string = string.split("\n")
 
 new_list = [x for x in string if x != '']
 del new_list[0:78]
-del new_list[10194:len(new_list)]
+del new_list[8212:len(new_list)]
 
-class Item(name, resume, desc, type, itemPool):
-    this.name = name;
-
-
-print(new_list)
+for i in new_list:
+    i = i.replace("* ", "")
+    i = i.replace("*", "")
+    i = i.replace('"', '')
+    print(i)
